@@ -1,0 +1,41 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "children": [
+                {
+                    "id": 2,
+                    "brief": "Increase DB pool size or reduce worker concurrency; if errors stop, diagnosis is likely correct.",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "children": [
+                {
+                    "id": 4,
+                    "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                    "children": [
+                        {
+                            "id": 5,
+                            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

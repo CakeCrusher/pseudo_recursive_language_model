@@ -1,0 +1,38 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection exhaustion causes FastAPI 500s and timeouts, with app-side errors not always surfacing at ALB.",
+            "reasoning": "The intermittent 500 errors under load, together with TimeoutError in the logs, suggest that some requests are taking longer than expected and timing out. Database connection saturation further supports that the app may be exhausting available DB connections, leading to timeouts when new requests can't acquire one quickly enough. The missing 5xx spike in ALB metrics suggests that these 500s may not be seen at the ALB, possibly because client disconnects or FastAPI timeouts handle them before reaching ALB reporting thresholds, or retries mask the issue at load balancer level.",
+            "children": [
+                {
+                    "id": 2,
+                    "brief": "ALB may not see app 500s if FastAPI times out or disconnects before ALB gets the 5xx response.",
+                    "children": [
+                        {
+                            "id": 3,
+                            "brief": "DB pool size too small for burst load, causing requests to timeout and trigger internal 500s; increase pool or limit concurrency as minimal fix.",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "brief": "Increase DB pool size or cap app concurrency to prevent 500s due to connection exhaustion.",
+                    "reasoning": "A minimal fix would likely involve increasing the database connection pool size or limiting the FastAPI app's concurrency to match the DB pool, thereby ensuring requests are queued instead of failing when the pool is exhausted. This would prevent the TimeoutErrors and the resulting 500s that happen when requests cannot acquire a connection. Monitoring both app-side timeouts and DB pool exhaustion after the fix would help confirm this hypothesis.",
+                    "children": [
+                        {
+                            "id": 5,
+                            "brief": "Slow DB response or long-running queries may cause connection exhaustion and timeouts.",
+                            "reasoning": "While increasing the DB pool size is a practical fix, another possibility is that the DB itself is slow or has high latency under load, causing connections to get stuck and leading to timeouts upstream. Investigating DB performance and query timing during load tests would help determine if this is the limiting factor rather than pool size alone.",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection exhaustion causes FastAPI 500s and timeouts, with app-side errors not always surfacing at ALB.",
+            "reasoning": "The intermittent 500 errors under load, together with TimeoutError in the logs, suggest that some requests are taking longer than expected and timing out. Database connection saturation further supports that the app may be exhausting available DB connections, leading to timeouts when new requests can't acquire one quickly enough. The missing 5xx spike in ALB metrics suggests that these 500s may not be seen at the ALB, possibly because client disconnects or FastAPI timeouts handle them before reaching ALB reporting thresholds, or retries mask the issue at load balancer level.",
+            "children": []
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "reasoning": "TimeoutErrors during load and DB connection pool saturation suggest the app is running out of available DB connections, leading to request timeouts and 500s. This usually happens if the FastAPI application's concurrency (worker/process or thread count) allows more simultaneous DB access attempts than the DB or pool is configured to permit.",
+            "children": []
+        }
+    ]
+}

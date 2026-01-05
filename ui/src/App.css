@@ -1,0 +1,139 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.controls {
+  padding: 20px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.controls input[type="file"] {
+  padding: 10px;
+  border: 2px dashed #667eea;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.graph-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  font-size: 1.1em;
+}
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ef4444;
+  font-size: 1.1em;
+  padding: 20px;
+  text-align: center;
+}
+
+.details-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.details-header {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-header h2 {
+  color: #667eea;
+  font-size: 1.5em;
+}
+
+.details-header button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-header button:hover {
+  background: #dc2626;
+}
+
+.details-content {
+  padding: 20px;
+}
+
+.details-content div {
+  margin-bottom: 20px;
+}
+
+.details-content strong {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.details-content p {
+  color: #1e293b;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  padding: 12px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+

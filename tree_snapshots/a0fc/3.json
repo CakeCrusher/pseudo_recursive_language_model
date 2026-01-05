@@ -1,0 +1,24 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "children": [
+                {
+                    "id": 2,
+                    "brief": "Increase DB pool size or reduce worker concurrency; if errors stop, diagnosis is likely correct.",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "reasoning": "ALB not showing 5xx spikes suggests that it is not the source of the 500s, making it unlikely that the problem resides at the load balancer or network layer. The presence of TimeoutErrors in the app logs, specifically under load, points to a backend bottleneck rather than random errors. Seeing DB connection saturation implicates exhaustion of the database connection pool during high concurrency, leading app workers to timeout and return 500 errors to clients.",
+            "children": []
+        }
+    ]
+}

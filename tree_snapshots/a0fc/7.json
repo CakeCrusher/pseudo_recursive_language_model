@@ -1,0 +1,47 @@
+{
+    "id": 0,
+    "brief": "",
+    "reasoning": "",
+    "children": [
+        {
+            "id": 1,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "children": [
+                {
+                    "id": 2,
+                    "brief": "Increase DB pool size or reduce worker concurrency; if errors stop, diagnosis is likely correct.",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "children": [
+                {
+                    "id": 4,
+                    "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                    "children": [
+                        {
+                            "id": 5,
+                            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "brief": "DB connection pool exhaustion under heavy load likely causes request timeouts and 500s.",
+            "reasoning": "FastAPI relies on a database connection pool to handle concurrent requests, and under high load, more concurrent requests can cause the pool to become exhausted. When the pool is exhausted, new requests may fail to acquire a connection, leading to TimeoutErrors at the application level, which can result in 500 responses. This explains why App logs show TimeoutError and DB shows occasional connection saturation.",
+            "children": []
+        }
+    ]
+}
